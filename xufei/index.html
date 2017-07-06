@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>6月18日 许飞“一个梦想”音乐会报名</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="dist/semantic.min.css">
+	<link rel="icon" href="./xff.jpg">
+</head>
+<body>
+	<img src="./xff.jpg" alt="" width="0" height="0">
+	<div class="ui page dimmer chenggong">
+	  <div class="content">
+		      <div class="center aligned image content">
+			    <h1 class="ui icon black inverted header center aligned">
+				  <i class="massive check circle green icon"></i>
+				  <div class="content">
+				  	报名成功
+				  </div>
+				</h2>
+			  </div>
+	  </div>
+	</div>
+	<div class="ui long test modal">
+	  <img class="ui fluid image" src="dist/photo_icon.png" id="pic" style="margin-top:-250px !important;">
+	</div>
+
+	<div class="ui container">
+		<img class="ui centered small circular image" src="dist/xf.jpg" height="1242" width="1242">
+		<h3 class="ui center aligned icon header">
+			6月18日 许飞“一个梦想”音乐会报名
+		</h3>
+		<h4 class="ui horizontal red divider header">
+			<i class="edit icon"></i>
+		 报名填写</h4>
+
+		 <form class="ui form" onsubmit="return false" id="myForm">
+		  <div class="field">
+		    <label>昵称</label>
+		    <input type="text" name="name" placeholder="请填写昵称..." id="user">
+		  </div>
+		  <div class="field">
+		    <label>微信号</label>
+		    <input type="text" name="weixin" placeholder="请填写你的微信号..." id="weixin">
+		  </div>
+		  <div class="inline field">
+		    <div class="ui toggle checkbox">
+		      <input type="checkbox" tabindex="0" class="hidden">
+		      <label>是否多人报名</label>
+		    </div>
+		  </div>
+		  <div class="field transition hidden tot">
+		    <label>人数</label>
+		    <div class="ui number">
+		    	<input type="number" name="total" placeholder="请填写人数..." min="2" id="pepNum">
+		    </div>
+		  </div>
+
+	<!-- 	  <div class="field">
+		  	<label>应援金额 (一人20,上不封顶)</label>
+		    <div class="ui labeled input">
+				<div class="ui red label">RMB:</div>
+      			<input type="number" placeholder="许扣扣说低于20一人，提交不了..." min="20" id="monNum" name="monNum"> 
+		    </div>
+		  </div>
+		  <div class="field">
+		  	<label>应援支付宝账户</label>
+		  	<div class="ui right action input">
+		      <input type="text" value="shirlyxufei@sina.com" readonly id="myNum">
+		      <div class="ui red button myCopy red" data-clipboard-target="#myNum">
+		        <i class="copy icon"></i>
+		        复制
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="field">
+		  		<label>添加支付宝汇款截图</label>
+		  		<div class="ui grid">
+				  <div class="six wide column">
+				  	<div id="preview">
+                    	<img id="imghead" border="0" src="dist/photo_icon.png" width="90" height="90" onclick="$('#previewImg').click();">
+               	 	</div>        
+                	<input type="file" onchange="previewImage(this)" style="display: none;" id="previewImg" name="myfile">
+				  </div>
+				  <div class="ten wide column">
+				  	<button class="ui red button transition hidden picbtn" id="picbtn">图片预览</button>
+				  </div>
+				</div>
+           </div> -->
+
+		  <div class="ui horizontal divider">注：全部都要填，否则提交不了。</div>
+		  <button class="ui massive fluid red button" id="sub">确认报名</button>
+		  <br>
+		  <button class="ui massive fluid red button" id="yijin">查看已报名信息</button>
+		</form>
+		
+	</div>
+	
+	<script type="text/javascript" src="dist/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="dist/semantic.min.js"></script>
+	<script type="text/javascript" src="dist/clipboard.min.js"></script>
+	<script type="text/javascript">
+		var myclicp=new Clipboard('.myCopy');		//实例化
+		myclicp.on('success', function(e) {	//复制成功
+		    console.info('Action:', e.action);
+		    console.info('Text:', e.text);
+		    console.info('Trigger:', e.trigger);
+		    e.clearSelection();
+		});
+
+		myclicp.on('error', function(e) {  //复制失败
+		    console.error('Action:', e.action);
+		    console.error('Trigger:', e.trigger);
+		});
+
+
+		var num=1;	//默认人数是1
+		$('.ui.checkbox')
+  		.checkbox({
+  			onChecked:function(){	//开
+  				$('.tot')
+				  .transition('swing down')
+				;
+				num=2;
+  				console.log(1)
+  			},
+  			onUnchecked:function(){	 //关
+  				$('.tot')
+				  .transition('swing down')
+				;
+  				console.log(2)
+  				num=1;
+  			}
+  		})
+  		$("#pepNum").keyup(function(){
+  			num=2;
+  			num=$("#pepNum").val();
+  			console.log(num)
+  		})
+
+
+
+  		$("#picbtn").click(function() {
+  			var formData = new FormData(document.getElementById("myForm"));
+  			$.ajax({
+  				url: 'http://shenyuxf.top/xf/xufeiapi/yulan.php',
+  				type: 'POST',
+  				dataType:'json',
+  				data:formData,
+  				contentType: false,
+                processData: false,
+  				success:function(data){
+  					// alert(1)
+  					if(data.code==1){
+  						$("#pic").attr('src',"http://shenyuxf.top/xf/xufeiapi/yulan/"+data.data);
+	  					// console.log(data)
+	  					$('.ui.modal')
+						  .modal('show')
+						;
+  					}else{
+  						alert("设备不支持图片预览!")
+  					}
+  					
+  				},
+  				error:function(err){
+  					$("#pic").attr('src',"./dist/photo_icon.png");
+  					$('.ui.modal')
+					  .modal('show')
+					;
+  				}
+  			})
+  		});
+  		$("#pic").click(function(){
+  			$('.ui.modal')
+			  .modal('hide')
+			;
+  		})
+
+  		$("#yijin").click(function() {
+               window.location="http://shenyuxf.top/xf/xufei/table.html";
+  		})
+
+  		$("#sub").click(function() {
+  			var money=$("#monNum").val();
+  			
+      
+  	
+  			if(money<20*num){
+  				$('.container')
+					  .transition('shake')
+					;
+  				return false;
+  			}
+
+  			$('.ui.form')
+			  .form({
+			    fields: {
+			      name     : 'empty' ,
+			      weixin   : 'empty'   
+			      // monNum   : 'empty' ,   
+			      // myfile   : 'empty'   
+			    },
+			    onSuccess:function(){
+			    	$("#sub").addClass("disabled");
+			    	var name=$("#user").val();
+			    	var weixin=$("#weixin").val();
+			
+		      		var formData = new FormData(document.getElementById("myForm"));
+		  			$.ajax({
+		  				url: 'http://shenyuxf.top/xf/xufeiapi/input.php?name='+name+'&weixin='+weixin+'&num='+num+'&money='+money,
+		  				type: 'POST',
+		  				dataType:'json',
+		  				data:formData,
+		  				contentType: false,
+		                processData: false,
+		  				success:function(data){
+		  					console.log(data)
+		  					if(data.code==1){
+		  						$('.chenggong').dimmer('show');
+		  						setTimeout(function(){
+		  							window.location="http://shenyuxf.top/xf/xufei/table.html";
+		  						},2000);
+		  					}else{
+		  						alert("报名失败!");
+		  					}
+		  				},
+		  				error:function(err){
+		  					alert("报名失败!");
+		  				}
+		  			})
+			    },
+			    onFailure:function(){
+			    	$('.container')
+					  .transition('shake')
+					;
+			    }
+			  })
+
+
+
+  			
+  		});
+
+
+
+  		function previewImage(file)
+        {
+          var MAXWIDTH  = 90; 
+          var MAXHEIGHT = 90;
+          var div = document.getElementById('preview');
+          if (file.files && file.files[0])
+          {
+              div.innerHTML ='<img id=imghead onclick=$("#previewImg").click()>';
+              var img = document.getElementById('imghead');
+              img.onload = function(){
+                var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                img.width  =  rect.width;
+                img.height =  rect.height;
+//                 img.style.marginLeft = rect.left+'px';
+                img.style.marginTop = rect.top+'px';
+              }
+              var reader = new FileReader();
+              reader.onload = function(evt){img.src = evt.target.result;}
+              reader.readAsDataURL(file.files[0]);
+              $('.picbtn')
+			  .transition('tada');
+          }
+          else //兼容IE
+          {
+            var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+            file.select();
+            var src = document.selection.createRange().text;
+            div.innerHTML = '<img id=imghead>';
+            var img = document.getElementById('imghead');
+            img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+            var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+            status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+            div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
+          	$('.picbtn')
+			  .transition('tada');
+          }
+        }
+        function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+            var param = {top:0, left:0, width:width, height:height};
+            if( width>maxWidth || height>maxHeight ){
+                rateWidth = width / maxWidth;
+                rateHeight = height / maxHeight;
+                
+                if( rateWidth > rateHeight ){
+                    param.width =  maxWidth;
+                    param.height = Math.round(height / rateWidth);
+                }else{
+                    param.width = Math.round(width / rateHeight);
+                    param.height = maxHeight;
+                }
+            }
+            param.left = Math.round((maxWidth - param.width) / 2);
+            param.top = Math.round((maxHeight - param.height) / 2);
+            return param;
+        }
+	</script>
+</body>
+</html>
