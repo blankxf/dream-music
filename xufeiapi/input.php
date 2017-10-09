@@ -19,6 +19,7 @@
 		$data=[
 			"name"=>$_GET['name'],
 			"weixin"=>$_GET['weixin'],
+			"phone"=>$_GET['phone'],
 			"num"=>$_GET['num'],
 			"money"=>$_GET['money'],
 			"image"=>$pic,

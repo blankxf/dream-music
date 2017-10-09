@@ -34,6 +34,10 @@
 			    <label>金额</label>
 			    <input type="number" name="money" value="<?php echo $res[0]['money']?>">
 			  </div>
+			   <div class="field">
+			    <label>报名时间</label>
+			    <input type="text" name="addtime" value="<?php echo date("Y-m-d H:i:s",$res[0]['addtime'])?>">
+			  </div>
 			</div>
 		  <button class="ui button">确认修改</button>
 		</form>

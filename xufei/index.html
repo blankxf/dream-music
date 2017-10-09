@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>6月18日 许飞“一个梦想”音乐会报名</title>
+	<title>11月26日 许飞“一个梦想”音乐会报名</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="stylesheet" href="dist/semantic.min.css">
 	<link rel="icon" href="./xff.jpg">
@@ -28,7 +28,7 @@
 	<div class="ui container">
 		<img class="ui centered small circular image" src="dist/xf.jpg" height="1242" width="1242">
 		<h3 class="ui center aligned icon header">
-			6月18日 许飞“一个梦想”音乐会报名
+			11月26日 许飞“一个梦想”音乐会报名
 		</h3>
 		<h4 class="ui horizontal red divider header">
 			<i class="edit icon"></i>
@@ -43,6 +43,10 @@
 		    <label>微信号</label>
 		    <input type="text" name="weixin" placeholder="请填写你的微信号..." id="weixin">
 		  </div>
+		  <div class="field">
+		    <label>手机号</label>
+		    <input type="number" name="phone" placeholder="请填写你的手机号..." id="phone">
+		  </div>
 		  <div class="inline field">
 		    <div class="ui toggle checkbox">
 		      <input type="checkbox" tabindex="0" class="hidden">
@@ -56,11 +60,11 @@
 		    </div>
 		  </div>
 
-	<!-- 	  <div class="field">
-		  	<label>应援金额 (一人20,上不封顶)</label>
+		  <div class="field">
+		  	<label>应援金额 (一人50,上不封顶)</label>
 		    <div class="ui labeled input">
 				<div class="ui red label">RMB:</div>
-      			<input type="number" placeholder="许扣扣说低于20一人，提交不了..." min="20" id="monNum" name="monNum"> 
+      			<input type="number" placeholder="许扣扣说低于50一人，提交不了..." min="50" id="monNum" name="monNum"> 
 		    </div>
 		  </div>
 		  <div class="field">
@@ -87,7 +91,7 @@
 				  	<button class="ui red button transition hidden picbtn" id="picbtn">图片预览</button>
 				  </div>
 				</div>
-           </div> -->
+           </div>
 
 		  <div class="ui horizontal divider">注：全部都要填，否则提交不了。</div>
 		  <button class="ui massive fluid red button" id="sub">确认报名</button>
@@ -144,7 +148,7 @@
   		$("#picbtn").click(function() {
   			var formData = new FormData(document.getElementById("myForm"));
   			$.ajax({
-  				url: 'http://shenyuxf.top/xf/xufeiapi/yulan.php',
+  				url: 'http://runningh5.top/xf/xufeiapi/yulan.php',
   				type: 'POST',
   				dataType:'json',
   				data:formData,
@@ -153,7 +157,7 @@
   				success:function(data){
   					// alert(1)
   					if(data.code==1){
-  						$("#pic").attr('src',"http://shenyuxf.top/xf/xufeiapi/yulan/"+data.data);
+  						$("#pic").attr('src',"http://runningh5.top/xf/xufeiapi/yulan/"+data.data);
 	  					// console.log(data)
 	  					$('.ui.modal')
 						  .modal('show')
@@ -178,7 +182,7 @@
   		})
 
   		$("#yijin").click(function() {
-               window.location="http://shenyuxf.top/xf/xufei/table.html";
+               window.location="http://runningh5.top/xf/xufei/table.html";
   		})
 
   		$("#sub").click(function() {
@@ -186,7 +190,7 @@
   			
       
   	
-  			if(money<20*num){
+  			if(money<50*num){
   				$('.container')
 					  .transition('shake')
 					;
@@ -197,18 +201,20 @@
 			  .form({
 			    fields: {
 			      name     : 'empty' ,
-			      weixin   : 'empty'   
-			      // monNum   : 'empty' ,   
-			      // myfile   : 'empty'   
+			      weixin   : 'empty' ,
+			      phone   : 'empty' ,      
+			      monNum   : 'empty' ,   
+			      myfile   : 'empty'   
 			    },
 			    onSuccess:function(){
 			    	$("#sub").addClass("disabled");
 			    	var name=$("#user").val();
 			    	var weixin=$("#weixin").val();
+			    	var phone=$("#phone").val();
 			
 		      		var formData = new FormData(document.getElementById("myForm"));
 		  			$.ajax({
-		  				url: 'http://shenyuxf.top/xf/xufeiapi/input.php?name='+name+'&weixin='+weixin+'&num='+num+'&money='+money,
+		  				url: 'http://runningh5.top/xf/xufeiapi/input.php?name='+name+'&weixin='+weixin+'&phone='+phone+'&num='+num+'&money='+money,
 		  				type: 'POST',
 		  				dataType:'json',
 		  				data:formData,
@@ -219,7 +225,7 @@
 		  					if(data.code==1){
 		  						$('.chenggong').dimmer('show');
 		  						setTimeout(function(){
-		  							window.location="http://shenyuxf.top/xf/xufei/table.html";
+		  							window.location="http://runningh5.top/xf/xufei/table.html";
 		  						},2000);
 		  					}else{
 		  						alert("报名失败!");
@@ -231,9 +237,11 @@
 		  			})
 			    },
 			    onFailure:function(){
-			    	$('.container')
-					  .transition('shake')
-					;
+			  //   	$('.container')
+					//   .transition('shake')
+					// ;
+					console.log(1);
+					alert("瞅瞅哪里没填，金额是否正确")
 			    }
 			  })
 

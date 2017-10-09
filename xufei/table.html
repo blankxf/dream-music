@@ -69,7 +69,7 @@
 		var zongPeople=0;
 		var zongMoney=0;
 		$.ajax({
-				url: 'http://shenyuxf.top/xf/xufeiapi/table.php',
+				url: 'http://runningh5.top/xf/xufeiapi/table.php',
 				type: 'GET',
 				dataType:'json',
 				data: {key:str},
@@ -87,6 +87,7 @@
 									    <th>序号</th>
 									    <th>昵称</th>
 									    <th>微信号</th>
+									    <th>手机号</th>
 									    <th>人数</th>
 									    <th>金额</th>
 									    <th>截图</th>
@@ -97,7 +98,7 @@
 							$.each(data.data, function(index, val) {
 								 var timer=new Date((val.addtime)*1000);
 								 var mytime=timer.getFullYear()+'/'+(timer.getMonth()+1)+'/'+timer.getDate()+" "+timer.getHours()+":"+timer.getMinutes()+":"+timer.getSeconds();
-								 var img=val.image!=""?"<a href='http://shenyuxf.top/xf/xufeiapi/images/"+val.image+"' target='_blank'><img src='http://shenyuxf.top/xf/xufeiapi/images/"+val.image+"' class='ui mini image'></a>":"";
+								 var img=val.image!=""?"<a href='http://runningh5.top/xf/xufeiapi/images/"+val.image+"' target='_blank'><img src='http://runningh5.top/xf/xufeiapi/images/"+val.image+"' class='ui mini image'></a>":"";
 								 zongPeople +=Number(val.num);
 								 zongMoney +=Number(val.money);
 								 $("<tbody>").html(`
@@ -105,6 +106,7 @@
 								      <td>`+(index+1)+`</td>
 								      <td>`+val.name+`</td>
 								      <td>`+val.weixin+`</td>
+								      <td>`+val.phone+`</td>
 								      <td>`+val.num+`</td>
 								      <td>¥: `+val.money+`</td>
 								      <td>`+img+`</td>
@@ -129,6 +131,7 @@
 									      <div class='header'>昵称: `+val.name+`</div>
 									   
 									      <div class='description'>人数: `+val.num+`</div>
+									       <div class='description'>报名时间: `+mytime+`</div>
 									    
 									    </div>
 								 	`).appendTo("#myul")

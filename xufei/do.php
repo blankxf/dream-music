@@ -11,7 +11,9 @@
 			$data=[
 				"id"=>$id,
 				"num"=>$_POST['num'],
-				"money"=>$_POST['money']
+				"money"=>$_POST['money'],
+				"addtime"=>strtotime($_POST['addtime'])
+
 			];
 			$res=$model->save($data);
 			if($res){

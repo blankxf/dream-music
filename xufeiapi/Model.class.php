@@ -26,6 +26,7 @@ class Model{
 		$this->getField();
 	}
 	
+
 	/**
 	  *  查询数据
 	  * @return array 二维数据
