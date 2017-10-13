@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>11月26日 许飞“一个梦想”音乐会报名</title>
@@ -7,12 +8,13 @@
 	<link rel="stylesheet" href="dist/semantic.min.css">
 	<link rel="icon" href="./xff.jpg">
 </head>
+
 <body>
 	<img src="./xff.jpg" alt="" width="0" height="0">
 	<div class="ui page dimmer chenggong">
-	  <div class="content">
-		      <div class="center aligned image content">
-			    <h1 class="ui icon black inverted header center aligned">
+		<div class="content">
+			<div class="center aligned image content">
+				<h1 class="ui icon black inverted header center aligned">
 				  <i class="massive check circle green icon"></i>
 				  <div class="content">
 				  	报名成功
@@ -30,6 +32,18 @@
 		<h3 class="ui center aligned icon header">
 			11月26日 许飞“一个梦想”音乐会报名
 		</h3>
+	   
+	    		<div class="ui card" style="margin:0 auto;">
+		  <div class="content">
+		    <div class="header">报名规则</div>
+		  </div>
+		  <div class="content">
+		    <p>门票224/人+应援费（最低50/人，上不封顶）汇款至支付宝shirlyxufei@sina.com，以汇款顺序安排座位。汇款后完善以下信息，联系负责人进入活动群。</p>
+		    
+	
+
+        </div>
+	    </div>
 		<h4 class="ui horizontal red divider header">
 			<i class="edit icon"></i>
 		 报名填写</h4>
@@ -61,10 +75,10 @@
 		  </div>
 
 		  <div class="field">
-		  	<label>应援金额 (一人50,上不封顶)</label>
+		  	<label>应援金额 (一人最低50/人，上不封顶)</label>
 		    <div class="ui labeled input">
 				<div class="ui red label">RMB:</div>
-      			<input type="number" placeholder="许扣扣说低于50一人，提交不了..." min="50" id="monNum" name="monNum"> 
+      			<input type="number" placeholder="只填写应援金额，不包含门票费用..." min="50" id="monNum" name="monNum"> 
 		    </div>
 		  </div>
 		  <div class="field">
@@ -237,11 +251,10 @@
 		  			})
 			    },
 			    onFailure:function(){
-			  //   	$('.container')
-					//   .transition('shake')
-					// ;
-					console.log(1);
-					alert("瞅瞅哪里没填，金额是否正确")
+			    	$('.container')
+					  .transition('shake')
+					;
+				
 			    }
 			  })
 
